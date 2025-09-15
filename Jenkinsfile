@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build & Push Image') {
             steps {
-                sh 'docker build -t my-dockerhub-user/my-website:latest .'
+                sh 'docker build -t my-dockerhub-user/my-website:latest ./Portfolio'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'hiesenbergg', passwordVariable: 'Walterwhite@10')]) {
                     sh '''
                       echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
